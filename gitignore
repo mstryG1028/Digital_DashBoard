@@ -1,4 +1,5 @@
 # Ignore OneDrive hidden files
+node_modules/
 *.lnk
 *.ini
 *.db
