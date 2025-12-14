@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>previous Form</title>
+    <link rel="stylesheet" href="../css/form.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style></style>
+  </head>
+  <body>
+    <div class="navbar2">
+      <a class="nav2btn" href="/"><h5>Home</h5></a>
+      <a class="nav2btn" href="/xumoChat"><h5>Xumo Chat</h5></a>
+      <a class="nav2btn" href="/form"><h5>Xumo Tier2</h5></a>
+      <a class="nav2btn"><h5>Reports</h5></a>
+      <a class="nav2btn"><h5>Daily Briefing Update Pending</h5></a>
+      <a class="nav2btn"><h5>Admin</h5></a>
+    </div>
+
+    <form method="POST" action="/form" class="formBox" id="mainForm">
+      <header>
+        <div
+          id="searchMessage"
+          style="color: red; font-weight: bold; margin-bottom: 10px"
+        ></div>
+      </header>
+
+      <div class="formRows" role="list">
+        <!-- Row 1 -->
+        <div class="row">
+          <div class="labelBox">
+            <div>
+              <div class="labelText">
+                Passdown Ticket <span class="required">*</span>
+              </div>
+              <div class="small">Is this a passdown?</div>
+            </div>
+          </div>
+          <div class="valueBox">
+            <div
+              class="inlineGroup"
+              role="radiogroup"
+              aria-label="Passdown Ticket"
+            >
+              <label class="radioLabel"
+                ><input type="radio" name="passdown" value="Yes" required />
+                Yes</label
+              >
+              <label class="radioLabel"
+                ><input type="radio" name="passdown" value="No" checked />
+                No</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="row" id="agentName">
+          <div class="labelBox">
+            <div class="labelText">Agent Name</div>
+          </div>
+          <div class="valueBox">
+            <input
+              type="text"
+              name="agentName"
+              placeholder="Enter Agent Name"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="row" id="ticketNumber">
+          <div class="labelBox">
+            <div class="labelText">Ticket Number</div>
+          </div>
+          <div class="valueBox">
+            <input
+              id="ticketInput"
+              type="Number"
+              min="0"
+              step="1"
+              name="ticketNumber"
+              placeholder="Enter Ticket Number"
+            />
+            <% if(userId){ %>
+            <button type="button" id="searchBtn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            
+              <button type="button" id="allFormSearchBtn" sty>
+              allInfo
+            </button>
+            <% } else{ %>
+            <h4></h4>
+            <% } %>
+
+          </div>
+        </div>
+
+        <!-- Row 4: Device Type (radios) -->
+        <div class="row">
+          <div class="labelBox">
+            <div class="labelText">
+              Device Type <span class="required">*</span>
+            </div>
+          </div>
+          <div class="valueBox">
+            <div class="inlineGroup" role="radiogroup" aria-label="Device Type">
+              <label class="radioLabel"
+                ><input
+                  type="radio"
+                  name="deviceType"
+                  value="xumoStreamBox"
+                  checked
+                />
+                Xumo Stream Box</label
+              >
+              <label class="radioLabel"
+                ><input type="radio" name="deviceType" value="xumoTv" /> Xumo
+                TV</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 5: Provider Type (select) -->
+        <div class="row" id="providerType">
+          <div class="labelBox">
+            <div class="labelText">Provider Type</div>
+            <div class="small">Select provider</div>
+          </div>
+          <div class="valueBox" id="xumoTv" style="display: none">
+            <select name="providerType">
+              <option value="">-- Choose Provider --</option>
+              <option>Xfinity</option>
+              <option>Charter</option>
+              <option>Medicom</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="valueBox" id="xumoStreamBox" style="display: none">
+            <select name="providerType">
+              <option value="">-- Choose Provider --</option>
+              <option>Xfinity xumo stream box</option>
+              <option>Charter xumo Stream box</option>
+              <option>D2C xumo stream box</option>
+              <option>mediacom</option>
+              <option>others</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 6: Status -->
+        <div class="row">
+          <div class="labelBox">
+            <div class="labelText">Status <span class="required">*</span></div>
+          </div>
+          <div class="valueBox">
+            <div class="inlineGroup">
+              <label class="radioLabel"
+                ><input type="radio" name="status" value="Open" checked />
+                Open</label
+              >
+              <label class="radioLabel"
+                ><input type="radio" name="status" value="Resolved" />
+                Resolved</label
+              >
+              <label class="radioLabel"
+                ><input type="radio" name="status" value="Pending" />
+                Pending</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 7: Pending Details (checkboxes) -->
+        <div class="row" id="pendingDetails">
+          <div class="labelBox">
+            <div class="labelText">Pending Details</div>
+            <div class="small">Why is it pending?</div>
+          </div>
+          <div class="valueBox">
+            <div class="inlineGroup">
+              <label class="checkboxLabel"
+                ><input
+                  type="checkbox"
+                  name="pendingDetails"
+                  value="escalated"
+                />
+                Escalated to Prod Team</label
+              >
+              <label class="checkboxLabel"
+                ><input
+                  type="checkbox"
+                  name="pendingDetails"
+                  value="unable_connect"
+                />
+                Unable to connect with customer</label
+              >
+              <label class="checkboxLabel"
+                ><input
+                  type="checkbox"
+                  name="pendingDetails"
+                  value="waiting_prod"
+                />
+                Waiting for Prod Team</label
+              >
+              <label class="checkboxLabel"
+                ><input
+                  type="checkbox"
+                  name="pendingDetails"
+                  value="waiting_customer"
+                />
+                Waiting for Customer</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 8: Attempt Number -->
+        <div class="row" id="attemptNumber">
+          <div class="labelBox">
+            <div class="labelText">Attempt No</div>
+          </div>
+          <div class="valueBox">
+            <div class="inlineGroup">
+              <label class="radioLabel"
+                ><input type="radio" name="attemptNo" value="1" /> 1</label
+              >
+              <label class="radioLabel"
+                ><input type="radio" name="attemptNo" value="2" /> 2</label
+              >
+              <label class="radioLabel"
+                ><input type="radio" name="attemptNo" value="3" /> 3</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 9: Attempt Status -->
+        <div class="row" id="attemptStatus">
+          <div class="labelBox">
+            <div class="labelText">Attempt Status</div>
+          </div>
+          <div class="valueBox">
+            <div class="inlineGroup">
+              <label class="radioLabel"
+                ><input type="radio" name="attemptStatus" value="contacted" />
+                Contacted Customer</label
+              >
+              <label class="radioLabel"
+                ><input type="radio" name="attemptStatus" value="voicemail" />
+                Voicemail</label
+              >
+              <label class="radioLabel"
+                ><input type="radio" name="attemptStatus" value="no_response" />
+                No Response</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 10: Attempted Date and Time -->
+        <div class="row" id="attemptedDate">
+          <div class="labelBox">
+            <div class="labelText">Attempted Date and Time</div>
+          </div>
+          <div class="valueBox">
+            <input type="datetime-local" name="attemptDate" />
+          </div>
+        </div>
+
+        <!-- Row 11: Follow up date -->
+        <div class="row" id="followUpDate">
+          <div class="labelBox">
+            <div class="labelText">Follow up date and time</div>
+          </div>
+          <div class="valueBox">
+            <input type="datetime-local" name="followUpDate" />
+          </div>
+        </div>
+
+        <!-- Row 12: Comment -->
+        <div class="row" id="comment">
+          <div class="labelBox">
+            <div class="labelText">Comment</div>
+          </div>
+          <div class="valueBox">
+            <textarea name="comment" placeholder="Add comments..."></textarea>
+          </div>
+        </div>
+
+        <!-- Row 13: Escalated to PROD -->
+        <div class="row" id="issueEscalatedTo">
+          <div class="labelBox">
+            <div class="labelText">Is the issue escalated to PROD</div>
+          </div>
+          <div class="valueBox">
+            <div
+              class="inlineGroup"
+              role="radiogroup"
+              aria-label="Escalated to PROD"
+            >
+              <label class="radioLabel"
+                ><input type="radio" name="isEscalatedToProd" value="yes" />
+                Yes</label
+              >
+              <label class="radioLabel"
+                ><input type="radio" name="isEscalatedToProd" value="no" />
+                No</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 14: Checklist (checkboxes) -->
+        <div class="row" id="multiCheckList">
+          <div class="labelBox">
+            <div class="labelText">Checklist</div>
+            <div class="small">Make sure fields are on Zendesk ticket</div>
+          </div>
+          <div class="valueBox" id="multiCheckBox">
+            <div style="display: grid; gap: 6px; width: 100%">
+              <label class="checkboxLabel"
+                ><input type="checkbox" name="mac" value="mac" /> I have
+                mentioned M.A.C. address</label
+              >
+              <label class="checkboxLabel"
+                ><input type="checkbox" name="serial" value="serial" /> I have
+                mentioned Serial Number</label
+              >
+              <label class="checkboxLabel"
+                ><input
+                  type="checkbox"
+                  name="custContact"
+                  value="custContact"
+                />
+                I have mentioned Customer's Contact Number</label
+              >
+              <label class="checkboxLabel"
+                ><input type="checkbox" name="altContact" value="altContact" />
+                I have mentioned Alternate Contact Number</label
+              >
+              <label class="checkboxLabel"
+                ><input type="checkbox" name="email" value="email" /> I have
+                mentioned Customer's Email</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 15: CS Ticket Number -->
+        <div class="row" id="csTicketNumber">
+          <div class="labelBox">
+            <div class="labelText">CS Ticket Number</div>
+          </div>
+          <div class="valueBox">
+            <input
+              type="text"
+              name="csTicketNumber"
+              placeholder="Enter CS Ticket Number"
+            />
+          </div>
+        </div>
+
+        <!-- Row 16: Issue Time Stamp -->
+        <div class="row" id="issueTimeStamp">
+          <div class="labelBox">
+            <div class="labelText">Issue Time Stamp</div>
+          </div>
+          <div class="valueBox">
+            <input type="datetime-local" name="issueTimeStamp" />
+          </div>
+        </div>
+
+        <!-- onclick pending leaving below action open all above field -->
+        <!-- Row 17: Redirected for replacement -->
+        <div class="row">
+          <div class="labelBox">
+            <div class="labelText">Redirected to provider for replacement?</div>
+          </div>
+          <div class="valueBox">
+            <div class="inlineGroup">
+              <label class="radioLabel"
+                ><input type="radio" name="redirectToProvider" value="yes" />
+                Yes</label
+              >
+              <label class="radioLabel"
+                ><input type="radio" name="redirectToProvider" value="no" />
+                No</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 18: Colombo Escalation (example) -->
+        <div class="row">
+          <div class="labelBox">
+            <div class="labelText">Columbo Escalation</div>
+          </div>
+          <div class="valueBox">
+            <div class="inlineGroup">
+              <label class="radioLabel"
+                ><input type="radio" name="columboEscalation" value="yes" />
+                Yes</label
+              >
+              <label class="radioLabel"
+                ><input type="radio" name="columboEscalation" value="no" />
+                No</label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- .formRows -->
+
+      <!-- footer actions -->
+      <div class="formFooter">
+        <button
+          id="cancelBtn"
+          type="button"
+          class="btn ghost"
+          onclick="document.getElementById('mainForm').reset()"
+        >
+          Cancel
+        </button>
+        <% if(userId){ %>
+        <button type="submit" class="btn">Save</button>
+        <% } else{ %>
+        <h4></h4>
+        <% } %>
+      </div>
+    </form>
+
+    <script src="../javascript/form.js">
+      
+
+    </script>
+  </body>
+</html>

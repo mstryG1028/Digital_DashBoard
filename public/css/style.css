@@ -1,0 +1,211 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --mainColor: rgb(82, 82, 223);
+  --hoverColor: rgb(110, 110, 248);
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 99%;
+  /* border: 1px solid ; */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue",
+    Arial;
+  background: var(--bg);
+  /* margin: 24px; */
+  color: #222;
+}
+
+.navbar {
+  height: 90px;
+  width: 98%;
+  /* border: 1px solid rgb(180, 178, 178); */
+  display: flex;
+  margin-top: 10px;
+}
+.logo {
+  height: 90px;
+  width: 30%;
+  background-color: var(--mainColor);
+  color: white;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  border: 1px solid;
+  box-shadow: -1px -1px rgb(180, 178, 178);
+}
+.logo h1 {
+  margin-left: 40px;
+  font-weight: bolder;
+}
+.login {
+  height: 90px;
+  width: 23%;
+  background-color: var(--mainColor);
+  color: white;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  border: 1px solid;
+  justify-content: space-evenly;
+  box-shadow: -1px -1px rgb(180, 178, 178);
+}
+.login h4 {
+  margin-left: 40px;
+  font-size: 18px;
+}
+.login a {
+  font-weight: 300;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+
+}
+
+.paragraph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 90px;
+  width: 50%;
+  border: 2px solid rgb(212, 211, 211);
+}
+.navbar2 {
+  margin: 10px;
+  height: 80px;
+  width: 98%;
+  display: flex;
+  align-items: center;
+}
+.nav2btn {
+  height: 40px;
+  width: max-content;
+  /* outline: none; */
+  border-radius: 3px;
+  border: none;
+  margin-left: 20px;
+  background-color: rgb(224, 223, 223);
+  text-decoration: none;
+  color: black;
+}
+.nav2btn:hover {
+  background-color: var(--hoverColor);
+  color: white;
+}
+.nav2btn h5 {
+  margin: 10px;
+  font-size: 15px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  
+}
+.middle {
+  height: 300px;
+  border: 1px solid #acaaaa ;
+  display: flex;
+flex-direction: column;
+}
+
+.download {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  background-color: #e7e6e6;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0;
+}
+.middle h3 {
+
+  height: 20px;
+  margin-top: 80px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.dateBox {
+display: flex;
+  margin-top: 20px;
+  height: 100px;
+  width: 100%;
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ticket{
+  margin-left: 15px;
+width: 300px;
+
+}
+.from{
+  margin-left: 15px;
+width: 300px;
+
+}
+.to{
+  margin-left: 15px;
+width: 300px;
+
+}
+.select{
+  margin-left: 15px;
+width: 250px;
+
+}
+.btns{
+  margin-left: 0px;
+width: 300px;
+
+
+}
+.dateinput{
+  /* margin-left: 10px; */
+  height: 35px;
+  width: 200px;
+  font-size: 15px;
+}
+.dateBox label {
+  margin-left: 10px;
+  font-size: 18px;
+}
+.select select {
+
+  height: 35px;
+  width: 200px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.exportbtn {
+  margin-top: 20px;
+  margin-left: 5px;
+  height: 40px;
+width: 200px;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  font-size: 15px;
+  background-color: var(--hoverColor);
+}
+/* 
+
+
+
+*/
+
+

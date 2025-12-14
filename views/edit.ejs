@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Edit Form</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/form.css" />
+
+  </head>
+  <body>
+    <div class="navbar2">
+      <a class="nav2btn" href="/"><h5>Home</h5></a>
+      <a class="nav2btn" href="/xumoChat"><h5>Xumo Chat</h5></a>
+      <a class="nav2btn" href="/form"><h5>Xumo Tier2</h5></a>
+    </div>
+
+    <form action="/form/edit/<%= ticketNumber %>" method="POST" class="formBox">
+      <!-- Agent Name -->
+      <div class="row">
+        <div class="labelBox"><div class="labelText">Agent Name</div></div>
+        <div class="valueBox">
+          <input
+            type="text"
+            name="agentName"
+            value="<%= user.agentName %>"
+            placeholder="Enter Agent Name"
+          />
+        </div>
+      </div>
+
+      <!-- Ticket Number -->
+      <div class="row">
+        <div class="labelBox"><div class="labelText">Ticket Number</div></div>
+        <div class="valueBox">
+          <input type="Number"  value="<%= ticketNumber %>" readonly />
+        </div>
+      </div>
+
+      <!-- Passdown -->
+      <div class="row">
+        <div class="labelBox"><div class="labelText">Passdown Ticket</div></div>
+        <div class="valueBox">
+          <label
+            ><input type="radio" name="passdown" value="Yes" <%= user.passdown
+            === "Yes" ? "checked" : "" %> /> Yes</label
+          >
+          <label
+            ><input type="radio" name="passdown" value="No" <%= user.passdown
+            === "No" ? "checked" : "" %> /> No</label
+          >
+        </div>
+      </div>
+
+      <!-- Device Type -->
+      <div class="row">
+        <div class="labelBox"><div class="labelText">Device Type</div></div>
+        <div class="valueBox">
+          <label
+            ><input type="radio" name="deviceType" value="xumoStreamBox" <%=
+            user.deviceType === "xumoStreamBox" ? "checked" : "" %> /> Xumo
+            Stream Box</label
+          >
+          <label
+            ><input type="radio" name="deviceType" value="xumoTv" <%=
+            user.deviceType === "xumoTv" ? "checked" : "" %> /> Xumo TV</label
+          >
+        </div>
+      </div>
+
+      <!-- Provider Type (Array) -->
+      <div class="row">
+        <div class="labelBox"><div class="labelText">Provider Type</div></div>
+        <div class="valueBox">
+          <select name="providerType" required>
+            <% if(Array.isArray(user.providerType)) { %> <%
+            user.providerType.forEach(pt => { %>
+            <option value="<%= pt %>" selected><%= pt %></option>
+            <% }) %> <% } else { %>
+            <option value="<%= user.providerType %>">
+              <%= user.providerType %>
+            </option>
+            <% } %>
+          </select>
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div class="row">
+        <div class="labelBox"><div class="labelText">Status</div></div>
+        <div class="valueBox">
+          <label
+            ><input type="radio" name="status" value="Open" <%= user.status ===
+            "Open" ? "checked" : "" %> /> Open</label
+          >
+          <label
+            ><input type="radio" name="status" value="Pending" <%= user.status
+            === "Pending" ? "checked" : "" %> /> Pending</label
+          >
+          <label
+            ><input type="radio" name="status" value="Resolved" <%= user.status
+            === "Resolved" ? "checked" : "" %> /> Resolved</label
+          >
+        </div>
+      </div>
+
+      <!-- Pending Details (Array of Checkboxes) -->
+      <div class="row">
+        <div class="labelBox"><div class="labelText">Pending Details</div></div>
+        <div class="valueBox">
+          <% const pending = Array.isArray(user.pendingDetails) ?
+          user.pendingDetails : []; %>
+          <label
+            ><input type="checkbox" name="pendingDetails" value="escalated" <%=
+            pending.includes("escalated") ? "checked" : "" %> /> Escalated to
+            Prod Team</label
+          >
+          <label
+            ><input type="checkbox" name="pendingDetails" value="unable_connect"
+            <%= pending.includes("unable_connect") ? "checked" : "" %> /> Unable
+            to connect</label
+          >
+          <label
+            ><input type="checkbox" name="pendingDetails" value="waiting_prod"
+            <%= pending.includes("waiting_prod") ? "checked" : "" %> /> Waiting
+            for Prod</label
+          >
+          <label
+            ><input type="checkbox" name="pendingDetails"
+            value="waiting_customer" <%= pending.includes("waiting_customer") ?
+            "checked" : "" %> /> Waiting for Customer</label
+          >
+        </div>
+      </div>
+      
+      <div class="row">
+      <div class="labelBox"><div class="labelText">Attempted Date and Time</div></div>
+      <div class="valueBox">
+        <input type="datetime-local" 
+               name="attemptDate"
+               value="<%= user.attemptDate ? new Date(user.attemptDate).toISOString().slice(0,16) : '' %>" />
+      </div>
+    </div>
+
+    <!-- Follow Up Date -->
+    <div class="row">
+      <div class="labelBox"><div class="labelText">Follow Up Date and Time</div></div>
+      <div class="valueBox">
+        <input type="datetime-local" 
+               name="followUpDate"
+               value="<%= user.followUpDate ? new Date(user.followUpDate).toISOString().slice(0,16) : '' %>" />
+      </div>
+    </div>
+
+
+
+
+      <!-- Comment -->
+      <div class="row">
+        <div class="labelBox"><div class="labelText">Comment</div></div>
+        <div class="valueBox">
+          <textarea name="comment"><%= user.comment %></textarea>
+        </div>
+      </div>
+
+      <!-- Escalated to PROD -->
+      <div class="row">
+        <div class="labelBox">
+          <div class="labelText">Escalated to PROD</div>
+        </div>
+        <div class="valueBox">
+          <label
+            ><input type="radio" name="isEscalatedToProd" value="yes" <%=
+            user.isEscalatedToProd === "yes" ? "checked" : "" %> /> Yes</label
+          >
+          <label
+            ><input type="radio" name="isEscalatedToProd" value="no" <%=
+            user.isEscalatedToProd === "no" ? "checked" : "" %> /> No</label
+          >
+        </div>
+      </div>
+
+      <!-- Checklist (boolean checkboxes) -->
+      <div class="row">
+        <div class="labelBox"><div class="labelText">Checklist</div></div>
+        <div class="valueBox">
+          <label
+            ><input type="checkbox" name="mac" <%= user.mac ? "checked" : "" %>
+            /> MAC Address</label
+          >
+          <label
+            ><input type="checkbox" name="serial" <%= user.serial ? "checked" :
+            "" %> /> Serial Number</label
+          >
+          <label
+            ><input type="checkbox" name="custContact" <%= user.custContact ?
+            "checked" : "" %> /> Customer Contact</label
+          >
+          <label
+            ><input type="checkbox" name="altContact" <%= user.altContact ?
+            "checked" : "" %> /> Alternate Contact</label
+          >
+          <label
+            ><input type="checkbox" name="email" <%= user.email ? "checked" : ""
+            %> /> Email</label
+          >
+        </div>
+      </div>
+
+      <!-- Row 15: CS Ticket Number -->
+      <div class="row" id="csTicketNumber">
+        <div class="labelBox">
+          <div class="labelText">CS Ticket Number</div>
+        </div>
+        <div class="valueBox">
+          <input
+            type="text"
+            name="csTicketNumber"
+            placeholder="Enter CS Ticket Number"
+            value="<%= user.csTicketNumber %>"
+          />
+        </div>
+      </div>
+
+    <!-- Issue Time Stamp -->
+    <div class="row">
+      <div class="labelBox"><div class="labelText">Issue Time Stamp</div></div>
+      <div class="valueBox">
+        <input type="datetime-local" 
+               name="issueTimeStamp"
+               value="<%= user.issueTimeStamp ? new Date(user.issueTimeStamp).toISOString().slice(0,16) : '' %>" />
+      </div>
+    </div>
+      <!-- onclick pending leaving below action open all above field -->
+      <!-- Row 17: Redirected for replacement -->
+      <div class="row">
+        <div class="labelBox">
+          <div class="labelText">Redirected to provider for replacement?</div>
+        </div>
+        <div class="valueBox">
+          <div class="inlineGroup">
+            <label class="radioLabel"
+              ><input type="radio" name="redirectToProvider" <%=
+              user.redirectToProvider ? "checked" : "" %> /> Yes</label
+            >
+            <label class="radioLabel"
+              ><input type="radio" name="redirectToProvider" <%=
+              user.redirectToProvider ? "checked" : "" %> /> No</label
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 18: Colombo Escalation (example) -->
+      <div class="row">
+        <div class="labelBox">
+          <div class="labelText">Columbo Escalation</div>
+        </div>
+        <div class="valueBox">
+          <div class="inlineGroup">
+            <label class="radioLabel"
+              ><input type="radio" name="columboEscalation" <%=
+              user.columboEscalation ? "checked" : "" %> /> Yes</label
+            >
+            <label class="radioLabel"
+              ><input type="radio" name="columboEscalation" <%=
+              user.columboEscalation ? "checked" : "" %> /> No</label
+            >
+          </div>
+        </div>
+      </div>
+      <button type="submit">submit</button>
+    </form>
+
+  </body>
+</html>

@@ -1,0 +1,160 @@
+ 
+      :root{
+        --panel-bg: #d5d7e2; /* page background */
+        --card-bg: #f7f7f7;  /* inner card */
+        --border: #d6d6d6;
+        --label: #e01818;
+        --muted: rgba(17, 17, 17, 0.5);
+        --accent: #2b7cff; /* blue buttons similar to screenshot */
+        --danger: #d12816; /* asterisk */
+        --field-bg: #ffffff;
+      }
+       /* :root {
+        --gap: 10px;
+        --label-w: 260px;
+        --accent: #2b7cff;
+        --muted: #666;
+        --bg: #f7f7f7;
+        --row-bg: #fff;
+        --border: #d6d6d6;
+        --radius: 6px;
+      } */
+
+body{
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+        color: var(--muted);
+}
+
+      .page-wrap{
+        max-width:980px; /* similar to screenshot width */
+        margin:24px auto;
+        padding:12px;
+
+      }
+      h1{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        margin-left: 250px;
+        text-align: center;
+        height: 50px;
+        border: 1px solid gray;
+        border-radius: 8px;
+        padding: 5;
+        width: 300px;
+        font-size: 18px;
+
+
+      }
+
+      .card{
+        background: var(--card-bg);
+        border:1px solid var(--border);
+        box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+        border-radius:2px;
+        overflow:hidden;
+      }
+
+      .card-header{
+        background: linear-gradient(#f7f7f7,#f2f2f2);
+        border-bottom:1px solid var(--border);
+        padding:10px 14px;
+        font-weight:600;
+        font-size:18px;
+        text-align:center;
+      }
+
+      .form-table{
+
+        width:100%;
+        border-collapse:collapse;
+      }
+tr{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+      .form-table td{
+
+        padding:10px 12px;
+        vertical-align:top;
+        border-bottom:1px solid #eee;
+      }
+
+      .label-cell{
+        width:50%;
+        border-collapse: collapse;
+        background: linear-gradient(#fbfbfb,#fafafa);
+        font-size:14px;
+        font-weight: bold;
+        color:var(--muted);
+        padding-top:14px;
+
+text-align: center;
+      }
+
+      .field-cell{
+        margin-left: 10px;
+        width:50%;
+        padding-top:8px;
+      }
+
+      .req{ color: var(--danger); margin-left:6px }
+
+      input[type="text"], select, textarea, .datetime {
+        width:96%;
+        padding:8px 10px;
+        border:1px solid var(--border);
+        background:var(--field-bg);
+        border-radius:2px;
+        font-size:13px;
+        box-sizing:border-box;
+      }
+
+      textarea{ resize:vertical }
+
+      .radio-group, .checkbox-group{
+        display:flex;
+        gap:18px;
+        align-items:center;
+        padding-top:6px;
+      }
+
+      .small-note{font-size:12px;color:var(--muted)}
+
+      .controls{
+        display:flex;
+        gap:12px;
+        justify-content:center;
+        padding:14px;
+        background:linear-gradient(#fafafa,#f8f8f8);
+        border-top:1px solid var(--border);
+      }
+
+      .btn{
+        min-width:92px;
+        padding:8px 14px;
+        border-radius:2px;
+        border:1px solid #bdbdbd;
+        font-weight:600;
+        cursor:pointer;
+        font-size:13px;
+      }
+
+      .btn.save{ margin-left: 400px; background:var(--accent); color:white; border-color:rgba(0,0,0,0.08) }
+      .btn.cancel{ background:#f5f5f5; color:#333 }
+
+      /* compact layout for lines that show several controls in one row */
+      .inline-row{ display:flex; gap:12px; align-items:center }
+
+      /* make checkboxes/radios visually similar to screenshot (compact) */
+      input[type=checkbox], input[type=radio]{ transform:scale(1); margin:6px }
+
+      @media (max-width:720px){
+        .label-cell{display:block;width:100%}
+        .field-cell{display:block;width:100%}
+        .form-table td{display:block}
+        .page-wrap{padding:10px}
+      }
+
+      .tier2{
+        display: none;
+      }

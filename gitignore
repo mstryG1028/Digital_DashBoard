@@ -1,0 +1,11 @@
+# Ignore OneDrive hidden files
+*.lnk
+*.ini
+*.db
+*.tmp
+*.bak
+~$*
+
+# Node/other project files (if applicable)
+node_modules/
+dist/

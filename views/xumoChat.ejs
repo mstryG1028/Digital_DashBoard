@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Xumo Chat</title>
+         <link rel="stylesheet" href="../css/xumoChat.css" />
+     <link rel="stylesheet" href="../css/form.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+   
+  </head>
+  <body>
+        <div class="navbar2">
+      <a class="nav2btn" href="/"><h5>Home</h5></a>
+      <a class="nav2btn" href="/xumoChat"><h5>Xumo Chat</h5></a>
+      <a class="nav2btn" href="/form"><h5>Xumo Tier2</h5></a>
+      <a class="nav2btn"><h5>Reports</h5></a>
+      <a class="nav2btn"><h5>Daily Briefing Update Pending</h5></a>
+      <a class="nav2btn"><h5>Admin</h5></a>
+      
+    </div>
+    
+
+    
+<form action="/xumoChat" method="POST">
+  <div class="page-wrap">
+    <div class="card">
+      <div class="card-header">Download Report</div>
+
+      <table class="form-table">
+
+        <!-- CHAT ID -->
+        <tr>
+          <td class="label-cell">CHAT ID <span class="req">*</span></td>
+          <td class="field-cell">
+            <input type="text" name="chatId" placeholder="Enter CHAT ID"  required required/>
+          </td>
+        </tr>
+
+        <!-- DEVICE -->
+        <tr>
+          <td class="label-cell">Device <span class="req">*</span></td>
+          <td class="field-cell">
+            <div class="radio-group">
+              <label><input type="radio" name="device" value="Xumo Stream Box" required /> Xumo Stream Box</label>
+              <label><input type="radio" name="device" value="Xumo TV" required /> Xumo TV</label>
+            </div>
+          </td>
+        </tr>
+
+        <!-- BRAND -->
+        <tr>
+          <td class="label-cell">TV Brand <span class="req">*</span></td>
+          <td class="field-cell">
+            <div class="radio-group">
+              <label><input type="radio" name="brand" value="Pioneer"required /> Pioneer</label>
+              <label><input type="radio" name="brand" value="Hisense" required/> Hisense</label>
+              <label><input type="radio" name="brand" value="Element"required /> Element</label>
+              <label><input type="radio" name="brand" value="Other" required/> Other</label>
+            </div>
+          </td>
+        </tr>
+
+        <!-- TYPE -->
+        <tr>
+          <td class="label-cell">Type <span class="req">*</span></td>
+          <td class="field-cell">
+            <select name="type" required>
+              <option>Activation</option>
+              <option>Service</option>
+            </select>
+          </td>
+        </tr>
+
+        <!-- SUBTYPE (FIXED: name="subtype") -->
+        <tr>
+          <td class="label-cell">Subtype <span class="req">*</span></td>
+          <td class="field-cell">
+            <select name="subtype" required>
+              <option>hell0</option>
+              <option>hell1</option>
+              <option>hell2</option>
+              <option>hell3</option>
+            </select>
+          </td>
+        </tr>
+
+        <!-- TICKET NO -->
+        <tr>
+          <td class="label-cell">Ticket No. <span class="req">*</span></td>
+          <td class="field-cell">
+            <input name="ticketNo" type="text" placeholder="Enter Ticket No." required  />
+          </td>
+        </tr>
+
+        <!-- TIER -->
+        <tr>
+          <td class="label-cell">Ticket Details <span class="req">*</span></td>
+          <td class="field-cell">
+            <div class="radio-group">
+              <label><input type="radio" name="tier" value=1 required checked /> Tier 1</label>
+              <label><input type="radio" name="tier" value=2 required  /> Tier 2</label>
+            </div>
+          </td>
+        </tr>
+
+        <!-- NAME CHECK -->
+        <tr class="tier2">
+          <td class="label-cell">I have mentioned Customer's Name on the Zendesk ticket <span class="req"></span></td>
+          <td class="field-cell">
+            <input name="nameCheck" type="checkbox" value="true"  />
+          </td>
+        </tr>
+
+        <!-- EMAIL CHECK -->
+        <tr class="tier2">
+          <td class="label-cell">I have mentioned Customer's Email on the Zendesk ticket <span class="req"></span></td>
+          <td class="field-cell">
+            <input name="emailCheck" type="checkbox" value="true"  />
+          </td>
+        </tr>
+
+        <!-- CONTACT CHECK -->
+        <tr class="tier2">
+          <td class="label-cell">I have mentioned Customer's Contact Number on the Zendesk ticket <span class="req"></span></td>
+          <td class="field-cell">
+            <input name="contactCheck" type="checkbox" value="true"  />
+          </td>
+        </tr>
+
+        <!-- PREFERRED TIME -->
+        <tr class="tier2">
+          <td class="label-cell">Preferred Time</td>
+          <td class="field-cell">
+            <input name="prefTime" class="datetime" type="time" />
+          </td>
+        </tr>
+                <!-- PREFERRED Date -->
+        <tr class="tier2">
+          <td class="label-cell">Preferred Date</td>
+          <td class="field-cell">
+            <input name="prefDate" class="datetime" type="Date" />
+          </td>
+        </tr>
+
+        <!-- TIMEZONE -->
+        <tr class="tier2">
+          <td class="label-cell">Timezone</td>
+          <td class="field-cell">
+            <select name="timeZone" required>
+              <option>-- Select Timezone --</option>
+              <option>UK</option>
+              <option>IN</option>
+              <option>US</option>
+            </select>
+          </td>
+        </tr>
+
+        <!-- MAC CHECK (FIXED: MAC_Check) -->
+        <tr class="tier2">
+          <td class="label-cell">I have mentioned M.A.C. address <span class="req"></span></td>
+          <td class="field-cell">
+            <input name="MAC_Check" type="checkbox" value="true" />
+          </td>
+        </tr>
+
+        <!-- SERIAL NUMBER CHECK -->
+        <tr class="tier2">
+          <td class="label-cell">I have mentioned Serial Number <span class="req"></span></td>
+          <td class="field-cell">
+            <input name="serialNo_Check" type="checkbox" value="true"  />
+          </td>
+        </tr>
+
+        <!-- REDIRECT TO PROVIDER -->
+        <tr>
+          <td class="label-cell">Redirected to provider for replacement? <span class="req">*</span></td>
+          <td class="field-cell">
+            <div class="inline-row">
+              <label><input type="radio" name="redirectToProd" value="Yes" required /> Yes</label>
+              <label><input type="radio" name="redirectToProd" value="No" required /> No</label>
+            </div>
+          </td>
+        </tr>
+
+        <!-- COMMENT -->
+        <tr>
+          <td class="label-cell">Comment <span class="req">*</span></td>
+          <td class="field-cell">
+            <textarea name="comment" rows="5" placeholder="Enter Comments..." required></textarea>
+          </td>
+        </tr>
+
+      </table>
+
+      <div class="controls">
+        <button class="btn save" type="submit" >Save</button>
+        <button class="btn cancel" type="reset" >Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</form>
+
+<script src="../javascript/xumoChat.js"></script>
+  </body>
+</html>

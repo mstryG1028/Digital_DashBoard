@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+    <link rel="stylesheet" href="../css/form.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    
+</head>
+<body>
+    <div class="middle">
+  <form method="GET" action="/export-forms">
+    <div class="download"><h2>Download Report</h2></div>
+
+    <h3>Select Date Range</h3>
+    <div class="dateBox">
+      <div class="from">
+        <label for="from">From:</label>
+        <input class="dateinput" type="date" name="from" />
+      </div>
+      <div class="to">
+        <label for="to">To:</label>
+        <input class="dateinput" type="date" name="to" />
+      </div>
+
+      <div class="select">
+        <label for="Report">Report </label>
+        <select>
+          <option>XUMO Chat Tier2</option>
+          <option>XUMO Chat</option>
+        </select>
+      </div>
+
+      <div class="btns">
+<% if(userId){ %>
+        <button class="exportbtn" type="submit">Export To Excel</button>
+  <% } else{ %>
+          <h4> </h4>
+  <% } %>
+
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>

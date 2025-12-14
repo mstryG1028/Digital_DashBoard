@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+      <link rel="stylesheet" href="../css/style.css" />
+
+</head>
+<style>
+  
+  /* Container for all count cards */
+.countBox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* center on screen */
+  margin: 60px 20px;
+}
+
+/* Individual chat count card */
+.chatCount {
+  background-color:  rgb(224, 223, 223);
+  border-radius: 20px;
+  padding: 30px 20px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: default;
+
+}
+
+/* Hover effect */
+.chatCount:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 20px black;
+  font-size: 2.7rem;
+}
+
+/* Text inside card */
+.chatCount .text {
+  width: 100%;
+  padding: 4px;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  font-size: 1rem;
+   color: black;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+/* Number inside card */
+.chatCount h1 {
+  font-size: 2.5rem;
+   color: black;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chatCount {
+    width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .chatCount {
+    width: 100%;
+  }
+}
+.excel-grid {
+
+  display: grid;
+
+  grid-template-columns: 100px repeat(15, 1fr);
+  max-width: 1000px;
+  border: 1px solid #ccc;
+  overflow: auto;
+  font-family: Arial, sans-serif;
+}
+
+.cell {
+  display: flex;
+    text-align: center;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #444242;
+  min-height: 40px;
+  width: 100px;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  outline: none;
+}
+
+.cell:focus {
+  border: 2px solid #333335;
+}
+
+.header {
+  background: #f3f3f3;
+  font-weight: bold;
+  text-align: center;
+}
+.footer {
+  display: flex;
+  text-align: center;
+  background-color: var(--mainColor);
+  width: 98%;
+  height: 70px;
+margin-top: 50px;
+margin-bottom: 1px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+  bottom: 0;
+}
+
+
+</style>
+<body>
+  <body>
+  <div id="pageWrapper" class="page-wrapper">
+    <!-- Your navbar + form content here -->
+  </div>
+</body>
+
+   <div class="navbar">
+      <div class="logo">
+        <h1>Chat Workflow</h1>
+      </div>
+      <div class="paragraph">
+        <p>
+          Is something bothering you? Please feel free to reach out to iur
+          leadership team<br />
+          1.Griffin Templeton ? Email:Griffinboyd.T@eclerx.com<br />
+          2.Shantwan Sathe ? Email:Shantwan.Sathe01@eclearx.com
+        </p>
+      </div>
+      <div class="login">
+ <% if(userId){ %>
+          <h4> Id: <%= userId %> </h4>
+                  <h4><a href="/logout">Logout</a></h4>
+  <% } else{ %>
+        <h4><a href="/login">Login</a></h4>
+  <% } %>
+
+      </div>
+    </div>
+<div class="navbar2">
+  <a class="nav2btn" href="/xumoChat"><h5>Xumo Chat</h5></a>
+  <a class="nav2btn" href="/form"><h5>Xumo Tier2</h5></a>
+  <a class="nav2btn" href="/reports"><h5>Reports</h5></a>
+  <a class="nav2btn"><h5>Daily Briefing Update Pending</h5></a>
+  <a class="nav2btn"><h5>Admin</h5></a>
+</div>
+
+<div class="countBox">
+  <div class="chatCount">
+    <div class="text">Today's Tier 1 count</div>
+    <h1><%= tier1Count %></h1>
+  </div>
+
+  <div class="chatCount">
+    <div class="text">Today's Tier 2 count</div>
+    <h1><%= tier2Count %></h1>
+  </div>
+
+  <div class="chatCount">
+    <div class="text">Today's Total count</div>
+    <h1><%= tier1Count + tier2Count %></h1>
+  </div>
+</div>
+
+<div class="excel-grid">
+  <% 
+    let ticketIndex = 0;
+    const safeTickets = tickets || [];
+    for (let r = 1; r <= 15; r++) { 
+  %>
+
+    <div class="cell header"><%= r %></div>
+
+    <% for (let c = 1; c <= 15; c++) { %>
+      <div class="cell" contenteditable="true">
+        <% if (ticketIndex < safeTickets.length) { %>
+          <%= safeTickets[ticketIndex] %>
+          <% ticketIndex++; %>
+        <% } %>
+      </div>
+    <% } %>
+
+  <% } %>
+</div>
+
+
+
+
+      <div class="footer">
+        <h3>Copyright<?> 2025 eClerx. All Rights Reserved</h3>
+      </div>
+</body>
+</html>
