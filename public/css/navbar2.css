@@ -1,0 +1,28 @@
+
+
+.navbar2 {
+  margin: 5px;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(110, 110, 248,0.5);
+}
+.nav2btn {
+  height: 40px;
+  width: max-content;
+  border-radius: 3px;
+  border: none;
+  margin-left: 20px;
+  background-color: rgb(224, 223, 223);
+  text-decoration: none;
+  color: black;
+}
+.nav2btn:hover {
+  background-color: var(--hoverColor);
+  color: white;
+}
+.nav2btn h5 {
+  margin: 10px;
+  font-size: 15px;
+}

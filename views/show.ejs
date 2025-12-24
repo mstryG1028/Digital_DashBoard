@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Edit Form</title>
-    <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/form.css" />
+    <link rel="stylesheet" href="/css/navbar2.css">
 
   </head>
   <body>
@@ -13,6 +14,9 @@
       <a class="nav2btn" href="/"><h5>Home</h5></a>
       <a class="nav2btn" href="/xumoChat"><h5>Xumo Chat</h5></a>
       <a class="nav2btn" href="/form"><h5>Xumo Tier2</h5></a>
+      <a class="nav2btn" href="/reports"><h5>Reports</h5></a>
+  <a class="nav2btn"><h5>Daily Briefing Update Pending</h5></a>
+  <a class="nav2btn"><h5>Admin</h5></a>
     </div>
 
     <div class="formBox">
@@ -270,8 +274,10 @@
           </div>
         </div>
       </div>
-      <a href="/form/edit/<%= ticketNumber%>">Edit</a>
-    </div>
 
+    </div>
+<div class="edit-btn-box">
+        <a href="/form/edit/<%= ticketNumber%>" class="  edit-btn">Edit</a>
+</div>
   </body>
 </html>

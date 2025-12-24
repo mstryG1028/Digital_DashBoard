@@ -1,0 +1,120 @@
+.middle {
+  display: flex;
+  justify-content: center;
+  padding: 30px 16px;
+  
+}
+
+/* FORM CARD */
+.middle form {
+    margin-top: 100px;
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 28px 32px;
+ width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+}
+
+.download{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+border-bottom: 1px solid gray;
+      background-color: #f8fafc;
+      height: 40px;
+      margin-bottom: 10px;
+
+}
+/* HEADER */
+.download h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1e293b;
+  width: 100%;
+
+  
+}
+
+.middle h3 {
+  font-size: 14px;
+  color: #171718;
+  margin-bottom: 20px;
+}
+
+/* DATE + SELECT ROW */
+.dateBox {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  align-items: end;
+}
+
+/* FIELD BLOCK */
+.dateBox > div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* LABEL */
+.dateBox label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #475569;
+}
+
+/* INPUTS & SELECT */
+.dateinput,
+select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  background: white;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.dateinput:focus,
+select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* BUTTON CONTAINER */
+.btns {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* EXPORT BUTTON */
+.exportbtn {
+  width: 100%;
+  padding: 11px 16px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.exportbtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+}
+
+.exportbtn:active {
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .middle form {
+    padding: 22px;
+  }
+}

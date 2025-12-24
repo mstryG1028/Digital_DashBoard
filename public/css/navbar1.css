@@ -1,0 +1,63 @@
+
+
+
+.navbar {
+  height: 90px;
+ width:100%;
+  background-color: #fff;
+  display: flex;
+  z-index: 100;
+  position: sticky;
+  top: 0;
+  left: 0;
+  overflow: auto;
+}
+.logo {
+  height: 90px;
+  width: 30%;
+  background-color: var(--mainColor);
+  color: white;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  border: 1px solid;
+  box-shadow: -1px -1px rgb(180, 178, 178);
+}
+.logo h1 {
+  margin-left: 40px;
+  font-weight: bolder;
+}
+.login {
+  height: 90px;
+  width: 23%;
+  background-color: var(--mainColor);
+  color: white;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  border: 1px solid;
+  justify-content: space-evenly;
+  box-shadow: -1px -1px rgb(180, 178, 178);
+}
+.login h4 {
+  margin-left: 40px;
+  font-size: 18px;
+}
+.login a {
+  font-weight: 300;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+
+}
+
+.paragraph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 90px;
+  width: 50%;
+  border: 2px solid rgb(212, 211, 211);
+}

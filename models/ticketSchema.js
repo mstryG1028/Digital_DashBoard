@@ -1,4 +1,15 @@
+// const mongoose = require("mongoose");
 
+// const ticketSchema = new mongoose.Schema({
+//   ticketNo: String,
+//   tier: Number,           // store as number
+//   createdAt: {
+//     type: Date,
+//     default: Date.now
+//   }
+// });
+
+// module.exports = mongoose.model("Ticket", ticketSchema);
 
 const mongoose = require("mongoose");
 

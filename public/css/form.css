@@ -53,16 +53,24 @@
         display: contents; /* let label and value occupy the two grid columns */
       }
 #searchBtn{
-  height: 33px;
-  width: 40px;
+  height: 40px;
+  width: 50px;
   border: 1px solid #cfcfcf;
   background-color: #fff;
   border-radius: 5px;
-  font-size: 17px;
-
+  font-size: 19px;
   align-items: center;
   text-align: center;
 
+}
+#allFormSearchBtn{
+  height: 40px;
+  width: 80px;
+  border: 1px solid blue;
+  border-radius: 10px;
+  background-color: var(--accent);
+  color: white;
+  font-weight: bold;
 }
 .selectBox{
   width: 150px;
@@ -71,6 +79,18 @@
   margin-top: 8px;
   text-decoration: none;
   color: black;
+}
+.edit-submit-btn{
+  height: 40px;
+  width: 100px;
+  border: 1px solid blue;
+  border-radius: 10px;
+  background-color: var(--accent);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 850px;
+  margin-top: 10px;
 }
 
       #agentName {
@@ -210,6 +230,26 @@
         background: #fff;
         color: var(--accent);
         border: 1px solid #c9d9ff;
+      }
+      .edit-btn-box{
+        width: 82%;
+        display: flex;
+        margin: 20px;
+        /* border: 1px solid; */
+        justify-content: end;
+      }
+      .edit-btn{
+        text-align: center;
+         background: var(--accent);
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        width: 100px;
+
+       
       }
 
       /* Responsive: stack labels on small screens */
