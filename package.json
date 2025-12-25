@@ -1,8 +1,10 @@
-
 {
   "name": "project",
   "version": "1.0.0",
   "main": "app.js",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
@@ -15,7 +17,6 @@
     "express-session": "^1.18.2",
     "mongoose": "^8.18.2",
     "multer": "^2.0.2",
-    "path": "^0.12.7",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
