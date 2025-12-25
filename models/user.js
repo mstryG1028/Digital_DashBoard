@@ -1,6 +1,6 @@
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/Project");
+
 const { Schema } = mongoose;
 const formSchema = new Schema({
   passdown: { type: String, required: true },

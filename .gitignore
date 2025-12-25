@@ -3,12 +3,13 @@ node_modules/
 
 # Build folder
 dist/
+.env
 
 # Logs
 *.log
 
 # Environment files
-.env
+
 
 # OS / editor files
 .DS_Store

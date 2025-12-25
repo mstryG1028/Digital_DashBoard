@@ -1,7 +1,9 @@
+require('dotenv').config();
+const port = process.env.PORT || 1234;
 const express = require("express");
 const session = require("express-session");
 const app = express();
-const port = 1234;
+
 const path = require("path");
 const ejs = require("ejs");
 const ejsMate = require("ejs-mate");
@@ -9,7 +11,6 @@ const User = require("./models/user");
 const Ticket = require("./models/ticketSchema");
 const XumoChat = require("./models/xumoChat");
 const multer = require("multer");
-
 
 const XLSX = require("xlsx");
 
@@ -21,6 +22,13 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+const mongoose = require("mongoose");
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error(err));
 
 app.use(
   session({
@@ -39,13 +47,20 @@ app.use((req, res, next) => {
 const upload = multer({
   dest: "uploads/",
   fileFilter: (req, file, cb) => {
-    if (file.mimetype.includes("excel") || file.originalname.endsWith(".xlsx")) {
+    if (
+      file.mimetype.includes("excel") ||
+      file.originalname.endsWith(".xlsx")
+    ) {
       cb(null, true);
     } else {
       cb(new Error("Only Excel files allowed"));
     }
-  }
+  },
 });
+
+
+
+
 
 app.get("/", async (req, res) => {
   try {
@@ -64,75 +79,25 @@ app.get("/", async (req, res) => {
     const users = await User.find({}, { ticketNumber: 1, _id: 0 });
 
     // Convert to SET for fast lookup
-    const userTicketSet = new Set(
-      users.map(u => String(u.ticketNumber))
-    );
+    const userTicketSet = new Set(users.map((u) => String(u.ticketNumber)));
 
     /* -------- PREPARE GRID DATA -------- */
-    const gridTickets = excelTickets.map(ticket => ({
+    const gridTickets = excelTickets.map((ticket) => ({
       ticketNo: ticket,
-      matched: userTicketSet.has(String(ticket))
+      matched: userTicketSet.has(String(ticket)),
     }));
 
     res.render("home", {
       tier1Count,
       tier2Count,
-      gridTickets
+      gridTickets,
     });
-
   } catch (err) {
     console.error("HOME ERROR:", err);
     res.status(500).send("Server Error");
   }
 });
 
-// app.get("/", async (req, res) => {
-//   try {
-//     const today = new Date().toISOString().split("T")[0];
-
-//     /* -------- DAILY COUNTS -------- */
-//     const todayTicket = await Ticket.findOne({ date: today });
-
-//     const tier1Count = todayTicket ? todayTicket.tier1Count : 0;
-//     const tier2Count = todayTicket ? todayTicket.tier2Count : 0;
-
-//     /* -------- TODAY'S TICKETS (FOR GRID) -------- */
-//     const startOfDay = new Date();
-//     startOfDay.setHours(0, 0, 0, 0);
-
-//     const endOfDay = new Date();
-//     endOfDay.setHours(23, 59, 59, 999);
-
-//     const chats = await XumoChat.find({
-//       createdAt: { $gte: startOfDay, $lte: endOfDay }
-//     }).select("ticketNo").sort({ createdAt: 1 });
-
-//     const tickets = chats.map(c => c.ticketNo);
-
-//  const users = await User.find({}, { ticketNumber: 1, _id: 0 });
-
-//     // Convert to SET for fast lookup
-//     const userTicketSet = new Set(
-//       users.map(u => String(u.ticketNumber))
-//     );
-
-//     /* -------- PREPARE GRID DATA -------- */
-//     const gridTickets = excelTickets.map(ticket => ({
-//       ticketNo: ticket,
-//       matched: userTicketSet.has(String(ticket))
-//     }));
-
-//     res.render("home", {
-//       tier1Count,
-//       tier2Count,
-//       gridTickets 
-//     });
-
-//   } catch (err) {
-//     console.error("HOME ERROR:", err);
-//     res.status(500).send("Server Error");
-//   }
-// });
 
 app.post("/upload-excel", upload.single("excelFile"), async (req, res) => {
   try {
@@ -142,6 +107,7 @@ app.post("/upload-excel", upload.single("excelFile"), async (req, res) => {
 
     /* ---------- READ EXCEL FILE ---------- */
     const workbook = XLSX.readFile(req.file.path);
+   
     const sheetName = workbook.SheetNames[0];
     const sheet = workbook.Sheets[sheetName];
 
@@ -149,27 +115,18 @@ app.post("/upload-excel", upload.single("excelFile"), async (req, res) => {
 
     /* ---------- EXTRACT TICKET NUMBERS ---------- */
     // Excel must have column: ticketNo
-    const tickets = excelData
-      .map(row => row.ticketNo)
-      .filter(Boolean); // remove empty rows
+    const tickets = excelData.map((row) => row.ticketNo).filter(Boolean); // remove empty rows
 
     /* ---------- SAVE INTO SESSION ---------- */
     req.session.excelTickets = tickets;
 
-
-
     /* ---------- REDIRECT TO HOME ---------- */
     res.redirect("/");
-
   } catch (err) {
     console.error("EXCEL UPLOAD ERROR:", err);
     res.status(500).send("Excel upload failed");
   }
 });
-
-
-
-
 
 app.get("/reports", (req, res) => {
   res.render("reports");
@@ -277,12 +234,8 @@ app.get("/form", (req, res) => {
   res.render("form");
 });
 app.get("/xumoChat", (req, res) => {
-
-
   res.render("xumoChat");
 });
-
-
 
 app.post("/xumoChat", async (req, res) => {
   try {
@@ -335,25 +288,22 @@ app.post("/xumoChat", async (req, res) => {
     });
 
     /* ---------- UPDATE DAILY TICKET COUNT ---------- */
-    const update = tierNumber === 1
-      ? { $inc: { tier1Count: 1 } }
-      : { $inc: { tier2Count: 1 } };
+    const update =
+      tierNumber === 1
+        ? { $inc: { tier1Count: 1 } }
+        : { $inc: { tier2Count: 1 } };
 
-    await Ticket.findOneAndUpdate(
-      { date: today },
-      update,
-      { upsert: true, new: true }
-    );
+    await Ticket.findOneAndUpdate({ date: today }, update, {
+      upsert: true,
+      new: true,
+    });
 
     res.redirect("/");
-
   } catch (err) {
     console.error("XUMO CHAT ERROR:", err);
     res.status(500).send("Server Error");
   }
 });
-
-
 
 app.post("/form", async (req, res) => {
   try {
