@@ -1,6 +1,4 @@
-/* =======================
-   PAGE BASE
-======================= */
+
 
 body {
   margin: 0;
@@ -10,9 +8,6 @@ body {
   min-height: 100vh;
 }
 
-/* =======================
-   LOGIN CONTAINER
-======================= */
 
 .container {
   max-width: 420px;
@@ -30,9 +25,6 @@ body {
   font-weight: 700;
 }
 
-/* =======================
-   FORM
-======================= */
 
 form {
   display: flex;
@@ -54,9 +46,6 @@ form input:focus {
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
 
-/* =======================
-   BUTTON
-======================= */
 
 form button {
   padding: 12px;
@@ -75,9 +64,6 @@ form button:hover {
   box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
 }
 
-/* =======================
-   TABLET (<= 768px)
-======================= */
 
 @media (max-width: 768px) {
   .container {
@@ -90,9 +76,6 @@ form button:hover {
   }
 }
 
-/* =======================
-   MOBILE (<= 480px)
-======================= */
 
 @media (max-width: 480px) {
   .container {
