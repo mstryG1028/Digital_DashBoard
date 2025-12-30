@@ -1,3 +1,9 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 
 
   /* Container for all count cards */
@@ -123,19 +129,6 @@ align-items: center;
 .upload-btn:active {
   transform: scale(0.97);
 }
-
-.excel-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 6px;
-  padding: 16px;
-  background: white;
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  width: 99%;
-  margin-bottom: 10px;
-  padding: 62px;
-}
 .gridCount {
   display: flex;
   justify-content: center;
@@ -155,14 +148,19 @@ align-items: center;
  
 }
 
-.gridCount h4 span {
-  font-weight: 700;
+
+.excel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 6px;
+  padding: 16px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  width: 99%;
+  margin-bottom: 10px;
+  padding: 62px;
 }
-
-
-
-
-
 
 /* Individual cell */
 .cell {

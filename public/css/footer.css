@@ -1,6 +1,4 @@
-
- .footer {
-
+/* .footer {
   width: 100%;
   height: 70px;
 
@@ -11,5 +9,26 @@
   background-color: var(--mainColor);
   color: white;
 
+  z-index: 1000;
+} */
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+}
+
+.content-wrap {
+  flex: 1; /* pushes footer to bottom */
+}
+
+.footer {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4f46e5; /* example main color */
+  color: white;
   z-index: 1000;
 }

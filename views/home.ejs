@@ -1,25 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-<link rel="stylesheet" href="/css/home.css">
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/navbar1.css">
-<link rel="stylesheet" href="/css/navbar2.css">
-<link rel="stylesheet" href="/css/footer.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/navbar1.css" />
+    <link rel="stylesheet" href="/css/navbar2.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+  </head>
 
-
-</head>
-<style>
- 
-  </style>
-<body>
-
-
-   <div class="navbar">
+  <body>
+     <div class="page-container">
+    <div class="navbar">
       <div class="logo">
         <h1>Chat Workflow</h1>
       </div>
@@ -32,78 +26,79 @@
         </p>
       </div>
       <div class="login">
- <% if(userId){ %>
-          <h4> Id: <%= userId %> </h4>
-                  <h4><a href="/logout">Logout</a></h4>
-  <% } else{ %>
+        <% if(userId){ %>
+        <h4>Id: <%= userId %></h4>
+        <h4><a href="/logout">Logout</a></h4>
+        <% } else{ %>
         <h4><a href="/login">Login</a></h4>
-  <% } %>
-
+        <% } %>
       </div>
     </div>
-<div class="navbar2">
-        <a class="nav2btn" href="/"><h5>Home</h5></a>
-  <a class="nav2btn" href="/xumoChat"><h5>Xumo Chat</h5></a>
-  <a class="nav2btn" href="/form"><h5>Xumo Tier2</h5></a>
-  <a class="nav2btn" href="/reports"><h5>Reports</h5></a>
-  <a class="nav2btn"><h5>Daily Briefing Update Pending</h5></a>
-  <a class="nav2btn"><h5>Admin</h5></a>
-</div>
+    <div class="navbar2">
+      <a class="nav2btn" href="/"><h5>Home</h5></a>
+      <a class="nav2btn" href="/xumoChat"><h5>Xumo Chat</h5></a>
+      <a class="nav2btn" href="/form"><h5>Xumo Tier2</h5></a>
+      <a class="nav2btn" href="/reports"><h5>Reports</h5></a>
+      <a class="nav2btn"><h5>Daily Briefing Update Pending</h5></a>
+      <a class="nav2btn"><h5>Admin</h5></a>
+    </div>
 
+    <div class="content-wrap">
 <div class="countBox">
-  <div class="chatCount">
-    <div class="text">Today's Tier 1 count</div>
-    <h1><%= tier1Count %></h1>
-  </div>
+      <div class="chatCount">
+        <div class="text">Today's Tier 1 count</div>
+        <h1><%= tier1Count %></h1>
+      </div>
 
-  <div class="chatCount">
-    <div class="text">Today's Tier 2 count</div>
-    <h1><%= tier2Count %></h1>
-  </div>
+      <div class="chatCount">
+        <div class="text">Today's Tier 2 count</div>
+        <h1><%= tier2Count %></h1>
+      </div>
 
-  <div class="chatCount">
-    <div class="text">Today's Total count</div>
-    <h1><%= tier1Count + tier2Count %></h1>
-  </div>
-</div>
+      <div class="chatCount">
+        <div class="text">Today's Total count</div>
+        <h1><%= tier1Count + tier2Count %></h1>
+      </div>
+    </div>
 
-<form action="/upload-excel" method="POST" enctype="multipart/form-data" class="excel-upload-form">
-  <label class="excel-upload">
-    <input type="file" name="excelFile" accept=".xlsx" required  hidden />
-    <span class="upload-text">📄 Choose Excel File</span>
-  </label>
+    <form
+      action="/upload-excel"
+      method="POST"
+      enctype="multipart/form-data"
+      class="excel-upload-form"
+    >
+      <label class="excel-upload">
+        <input type="file" name="excelFile" accept=".xlsx" required hidden />
+        <span class="upload-text">📄 Choose Excel File</span>
+      </label>
 
-  <button type="submit" class="upload-btn">
-    ⬆ Upload Excel
-  </button>
-</form>
+      <button type="submit" class="upload-btn">⬆ Upload Excel</button>
+    </form>
 
-<% if (gridTickets.length > 0) { %>
+    <% if (gridTickets.length > 0) { %>
 
-<div class="gridCount">
-    <h4>Total Uploaded Tickets: <%= gridTickets.length %></h4>
-</div>
+    <div class="gridCount">
+      <h4>Total Uploaded Tickets: <%= gridTickets.length %></h4>
+    </div>
 
-  <div class="excel-grid">
-    
-    <% gridTickets.forEach(t => { %>
+    <div class="excel-grid">
+      <% gridTickets.forEach(t => { %>
       <div class="cell <%= t.matched ? 'green' : 'red' %>">
         <%= t.ticketNo %>
       </div>
-    <% }) %>
-  </div>
+      <% }) %>
+    </div>
 
-<% } %>
+    <% } %>
+    </div>
+    
 
-
-
-
-
-
-      <div class="footer">
-        <h3>Copyright<?> 2025 eClerx. All Rights Reserved</h3>
-      </div>
-
-
-</body>
+    <div class="footer">
+      <h3>
+        Copyright<?>
+        2025 eClerx. All Rights Reserved
+      </h3>
+    </div>
+    </div>
+  </body>
 </html>
