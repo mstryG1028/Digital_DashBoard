@@ -78,13 +78,23 @@
   </button>
 </form>
 
-<div class="excel-grid">
-  <% gridTickets.forEach(t => { %>
-    <div class="cell <%= t.matched ? 'green' : 'red' %>">
-      <%= t.ticketNo %>
-    </div>
-  <% }) %>
+<% if (gridTickets.length > 0) { %>
+
+<div class="gridCount">
+    <h4>Total Uploaded Tickets: <%= gridTickets.length %></h4>
 </div>
+
+  <div class="excel-grid">
+    
+    <% gridTickets.forEach(t => { %>
+      <div class="cell <%= t.matched ? 'green' : 'red' %>">
+        <%= t.ticketNo %>
+      </div>
+    <% }) %>
+  </div>
+
+<% } %>
+
 
 
 

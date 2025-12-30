@@ -136,6 +136,33 @@ align-items: center;
   margin-bottom: 10px;
   padding: 62px;
 }
+.gridCount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.gridCount h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 10px 20px;
+  border-radius: 10px; /* pill shape */
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: #ffffff;
+  margin: 0;
+ 
+}
+
+.gridCount h4 span {
+  font-weight: 700;
+}
+
+
+
+
+
 
 /* Individual cell */
 .cell {
