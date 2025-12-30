@@ -93,7 +93,6 @@
               step="1"
               name="ticketNumber"
               placeholder="Enter Ticket Number"
-              required
             />
             <% if(userId){ %>
             <button type="button" id="searchBtn">
@@ -143,7 +142,7 @@
             <div class="small">Select provider</div>
           </div>
           <div class="valueBox" id="xumoTv" style="display: none">
-            <select name="providerType" required>
+            <select name="providerType">
               <option value="">-- Choose Provider --</option>
               <option>Xfinity</option>
               <option>Charter</option>
@@ -152,7 +151,7 @@
             </select>
           </div>
           <div class="valueBox" id="xumoStreamBox" style="display: none">
-            <select name="providerType" required>
+            <select name="providerType">
               <option value="">-- Choose Provider --</option>
               <option>Xfinity xumo stream box</option>
               <option>Charter xumo Stream box</option>
@@ -386,6 +385,7 @@
           </div>
         </div>
 
+        <!-- onclick pending leaving below action open all above field -->
         <!-- Row 17: Redirected for replacement -->
         <div class="row">
           <div class="labelBox">
