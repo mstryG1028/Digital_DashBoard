@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="/css/home.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/navbar1.css" />
@@ -14,35 +14,29 @@
   <body>
      <div class="page-container">
     <div class="navbar">
-      <div class="logo">
-        <h1>Chat Workflow</h1>
-      </div>
-      <div class="paragraph">
-        <p>
-          Is something bothering you? Please feel free to reach out to iur
-          leadership team<br />
-          1.Griffin Templeton ? Email:Griffinboyd.T@eclerx.com<br />
-          2.Shantwan Sathe ? Email:Shantwan.Sathe01@eclearx.com
-        </p>
-      </div>
-      <div class="login">
-        <% if(userId){ %>
-        <h4>Id: <%= userId %></h4>
-        <h4><a href="/logout">Logout</a></h4>
-        <% } else{ %>
-        <h4><a href="/login">Login</a></h4>
-        <% } %>
-      </div>
-    </div>
-    <div class="navbar2">
-      <a class="nav2btn" href="/"><h5>Home</h5></a>
-      <a class="nav2btn" href="/xumoChat"><h5>Xumo Chat</h5></a>
-      <a class="nav2btn" href="/form"><h5>Xumo Tier2</h5></a>
-      <a class="nav2btn" href="/reports"><h5>Reports</h5></a>
-      <a class="nav2btn"><h5>Daily Briefing Update Pending</h5></a>
-      <a class="nav2btn"><h5>Admin</h5></a>
-    </div>
+  <div class="logo">
+    <h1>DASHBOARD</h1>
+  </div>
 
+ 
+
+  <div class="login">
+    <% if(userId){ %>
+      <span class="user-id">ID: <%= userId %></span>
+      <a href="/logout" class="btn">Logout</a>
+    <% } else { %>
+      <a href="/login" class="btn">Login</a>
+    <% } %>
+  </div>
+</div>
+    <div class="navbar2">
+  <a class="nav2btn" href="/">Home</a>
+  <a class="nav2btn" href="/xumoChat">Xumo Chat</a>
+  <a class="nav2btn" href="/form">Xumo Tier2</a>
+  <a class="nav2btn" href="/reports">Reports</a>
+  <a class="nav2btn disabled">Daily Briefing Update Pending</a>
+  <a class="nav2btn">Admin</a>
+</div>
     <div class="content-wrap">
 <div class="countBox">
       <div class="chatCount">
@@ -75,10 +69,10 @@
       <button type="submit" class="upload-btn">⬆ Upload Excel</button>
     </form>
 
-    <% if (gridTickets.length > 0) { %>
+    <% if (gridTickets.length > 0&& userId) { %>
 
     <div class="gridCount">
-      <h4>Total Uploaded Tickets: <%= gridTickets.length %></h4>
+      <h4>Pending Task Tickets: <%= gridTickets.length %></h4>
     </div>
 
     <div class="excel-grid">
@@ -96,7 +90,7 @@
     <div class="footer">
       <h3>
         Copyright<?>
-        2025 eClerx. All Rights Reserved
+        2024 EMU. All Rights Reserved
       </h3>
     </div>
     </div>

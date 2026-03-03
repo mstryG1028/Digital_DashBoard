@@ -1,129 +1,94 @@
+:root {
+  --mainColor: #4f46e5; /* keep your color */
+}
 
-
+/* NAVBAR */
 .navbar {
-  height: 90px;
+  height: 70px;
   width: 100%;
-  background-color: #fff;
+  background: var(--mainColor);
   display: flex;
-  z-index: 100;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
   position: sticky;
   top: 0;
-  left: 0;
-  overflow: auto;
+  z-index: 100;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-.logo {
-  height: 90px;
-  width: 30%;
-  background-color: var(--mainColor);
-  color: white;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  border: 1px solid;
-  box-shadow: -1px -1px rgb(180, 178, 178);
-}
-
+/* LOGO */
 .logo h1 {
-  margin-left: 40px;
-  font-weight: bolder;
+  color: white;
+  font-size: 24px;
+  letter-spacing: 2px;
+  font-weight: 700;
 }
+
+/* CENTER HEADLINE */
+.headline {
+  flex: 1;
+  text-align: center;
+}
+
+.headline h2 {
+  font-size: 34px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+/* Underline Animation */
+.headline h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 0%;
+  height: 4px;
+  background: white;
+  transition: 0.4s ease;
+}
+
+
+
+/* LOGIN SECTION */
 
 .login {
-  height: 90px;
-  width: 23%;
-  background-color: var(--mainColor);
-  color: white;
   display: flex;
-  text-align: center;
   align-items: center;
-  border: 1px solid;
-  justify-content: space-evenly;
-  box-shadow: -1px -1px rgb(180, 178, 178);
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px 20px;
+  border-radius: 40px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.login h4 {
-  margin-left: 40px;
-  font-size: 18px;
+/* USER ID */
+.user-id {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
 }
 
-.login a {
-  font-size: 20px;
-  font-weight: bold;
+/* BUTTON */
+.btn {
+  padding: 6px 16px;
+  background: white;
+  color: var(--mainColor);
+  border-radius: 20px;
+  font-weight: 600;
   text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: #111827;
   color: white;
-}
-
-.paragraph {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 90px;
-  width: 50%;
-  border: 2px solid rgb(212, 211, 211);
-}
-
-
-
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .logo,
-  .paragraph,
-  .login {
-    width: 100%;
-    height: auto;
-    justify-content: center;
-    padding: 12px 0;
-  }
-
-  .logo h1 {
-    margin-left: 0;
-    font-size: 22px;
-  }
-
-  .paragraph {
-    padding: 10px;
-    border-left: none;
-    border-right: none;
-  }
-
-  .login h4 {
-    margin-left: 0;
-    font-size: 16px;
-  }
-
-  .login a {
-    font-size: 16px;
-  }
-}
-
-
-@media (max-width: 480px) {
-  .logo h1 {
-    font-size: 18px;
-  }
-
-  .paragraph {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  .login {
-    outline: none;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .login h4 {
-    font-size: 14px;
-  }
-
-  .login a {
-    font-size: 15px;
-  }
+  transform: translateY(-2px);
 }

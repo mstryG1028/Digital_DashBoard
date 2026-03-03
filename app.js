@@ -1,4 +1,5 @@
-require('dotenv').config();
+// require('dotenv').config();
+require("dotenv").config({ debug: true });
 const port = process.env.PORT || 1234;
 const express = require("express");
 const session = require("express-session");
