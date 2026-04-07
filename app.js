@@ -7,11 +7,11 @@ const app = express();
 
 const path = require("path");
 const ejs = require("ejs");
-const ejsMate = require("ejs-mate");
+const ejsMate = require("ejs-mate"); // used for layouts declaration ex navbar fooetr in main page
 const User = require("./models/user");
 const Ticket = require("./models/ticketSchema");
 const XumoChat = require("./models/xumoChat");
-const multer = require("multer");
+const multer = require("multer"); //For uploading files from forms to the server 
 
 const XLSX = require("xlsx");
 
@@ -26,8 +26,9 @@ app.use(express.json());
 
 const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+  useNewUrlParser: true,//use the new connection string parser
+useUnifiedTopology: true //→ use the new engine for server monitoring and connections
+ 
 }).then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
 
@@ -79,10 +80,10 @@ app.get("/", async (req, res) => {
     /* -------- USER TICKETS -------- */
     const users = await User.find({}, { ticketNumber: 1, _id: 0 });
 
-    // Convert to SET for fast lookup
+    // Converted to SET for fast lookup
     const userTicketSet = new Set(users.map((u) => String(u.ticketNumber)));
 
-    /* -------- PREPARE GRID DATA -------- */
+    /* -------- GRID DATA -------- */
     const gridTickets = excelTickets.map((ticket) => ({
       ticketNo: ticket,
       matched: userTicketSet.has(String(ticket)),
@@ -112,7 +113,7 @@ app.post("/upload-excel", upload.single("excelFile"), async (req, res) => {
     const sheetName = workbook.SheetNames[0];
     const sheet = workbook.Sheets[sheetName];
 
-    const excelData = XLSX.utils.sheet_to_json(sheet);
+    const excelData = XLSX.utils.sheet_to_json(sheet);// for xl to json
 
     /* ---------- EXTRACT TICKET NUMBERS ---------- */
     // Excel must have column: ticketNo

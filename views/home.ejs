@@ -55,10 +55,11 @@
       </div>
     </div>
 
+    <!-- to upload any file/ img/vdo use enctype=multipart -->
     <form
       action="/upload-excel"
       method="POST"
-      enctype="multipart/form-data"
+      enctype="multipart/form-data" 
       class="excel-upload-form"
     >
       <label class="excel-upload">
@@ -77,7 +78,8 @@
 
     <div class="excel-grid">
       <% gridTickets.forEach(t => { %>
-      <div class="cell <%= t.matched ? 'green' : 'red' %>">
+        
+      <div class="cell <%= t.matched ? 'green': 'red' %>">
         <%= t.ticketNo %>
       </div>
       <% }) %>
